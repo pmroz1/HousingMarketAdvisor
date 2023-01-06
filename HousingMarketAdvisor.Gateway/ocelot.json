@@ -1,6 +1,6 @@
 {
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:7099"
+    "BaseUrl": "https://localhost:9004"
   },
   "Routes": [
     {
@@ -9,11 +9,11 @@
         "Get"
       ],
       "DownstreamPathTemplate": "/api/HousingOffer",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7093
+          "Port": 9001
         }
       ]
     },
@@ -23,11 +23,11 @@
         "Get"
       ],
       "DownstreamPathTemplate": "/api/HousingOffer/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7093
+          "Port": 9001
         }
       ]
     },
@@ -37,11 +37,11 @@
         "Post"
       ],
       "DownstreamPathTemplate": "/api/HousingOffer",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7093
+          "Port": 9001
         }
       ]
     },
@@ -51,11 +51,11 @@
         "Put"
       ],
       "DownstreamPathTemplate": "/api/HousingOffer/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7093
+          "Port": 9001
         }
       ]
     },
@@ -65,11 +65,11 @@
         "Delete"
       ],
       "DownstreamPathTemplate": "/api/HousingOffer/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7093
+          "Port": 9001
         }
       ]
     },
@@ -79,11 +79,11 @@
         "Get"
       ],
       "DownstreamPathTemplate": "/api/CurrencyExchangeRate",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7093
+          "Port": 9001
         }
       ]
     },
@@ -93,11 +93,11 @@
         "Get"
       ],
       "DownstreamPathTemplate": "/api/CurrencyExchangeRate/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7093
+          "Port": 9001
         }
       ]
     },
@@ -107,11 +107,11 @@
         "Post"
       ],
       "DownstreamPathTemplate": "/api/CurrencyExchangeRate",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7093
+          "Port": 9001
         }
       ]
     },
@@ -121,11 +121,11 @@
         "Put"
       ],
       "DownstreamPathTemplate": "/api/CurrencyExchangeRate/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7093
+          "Port": 9001
         }
       ]
     },
@@ -135,11 +135,11 @@
         "Delete"
       ],
       "DownstreamPathTemplate": "/api/CurrencyExchangeRate/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7093
+          "Port": 9001
         }
       ]
     }

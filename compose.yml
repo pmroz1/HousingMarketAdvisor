@@ -1,0 +1,20 @@
+#version: "3.3"
+services:
+  housingmarketadvisorapi_api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: ./HousingMarketAdvisor.API/Dockerfile
+    ports:
+      - "9000:443"
+      - "9001:80"
+  gateway:
+    container_name: gateway
+    build:
+      context: .
+      dockerfile: ./HousingMarketAdvisor.Gateway/Dockerfile
+    links:
+      - housingmarketadvisorapi_api
+    ports:
+      - "9003:443"
+      - "9004:80"
