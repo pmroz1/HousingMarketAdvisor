@@ -1,0 +1,147 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7099"
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/gateway/HousingOffer",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamPathTemplate": "/api/HousingOffer",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7093
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/HousingOffer/{id}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamPathTemplate": "/api/HousingOffer/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7093
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/HousingOffer",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "DownstreamPathTemplate": "/api/HousingOffer",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7093
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/HousingOffer/{id}",
+      "UpstreamHttpMethod": [
+        "Put"
+      ],
+      "DownstreamPathTemplate": "/api/HousingOffer/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7093
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/HousingOffer/{id}",
+      "UpstreamHttpMethod": [
+        "Delete"
+      ],
+      "DownstreamPathTemplate": "/api/HousingOffer/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7093
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/CurrencyExchangeRate",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamPathTemplate": "/api/CurrencyExchangeRate",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7093
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/CurrencyExchangeRate/{id}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamPathTemplate": "/api/CurrencyExchangeRate/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7093
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/CurrencyExchangeRate",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "DownstreamPathTemplate": "/api/CurrencyExchangeRate",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7093
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/CurrencyExchangeRate/{id}",
+      "UpstreamHttpMethod": [
+        "Put"
+      ],
+      "DownstreamPathTemplate": "/api/CurrencyExchangeRate/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7093
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/CurrencyExchangeRate/{id}",
+      "UpstreamHttpMethod": [
+        "Delete"
+      ],
+      "DownstreamPathTemplate": "/api/CurrencyExchangeRate/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7093
+        }
+      ]
+    }
+  ]
+}
