@@ -40,7 +40,7 @@ public class HousingOfferController : ControllerBase
             .RuleFor(ho => ho.ImageUrl, f => f.Image.PicsumUrl())
             .RuleFor(ho => ho.ImageUrl2, f => f.Image.PicsumUrl())
             .RuleFor(ho => ho.ImageUrl3, f => f.Image.PicsumUrl())
-            .Generate(10);
+            .Generate(50);
 
         _context.HousingOffers
             .AddRange(housingOffersGenerator);
