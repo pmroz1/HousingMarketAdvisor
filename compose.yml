@@ -2,14 +2,24 @@
 services:
   housingmarketadvisorapi_api:
     container_name: api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
     build:
       context: .
       dockerfile: ./HousingMarketAdvisor.API/Dockerfile
     ports:
       - "9000:443"
       - "9001:80"
+    depends_on:
+      - HMA1
+      - HMA2
+  
   gateway:
     container_name: gateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
     build:
       context: .
       dockerfile: ./HousingMarketAdvisor.Gateway/Dockerfile
@@ -18,3 +28,25 @@ services:
     ports:
       - "9003:443"
       - "9004:80"
+    depends_on:
+      - housingmarketadvisorapi_api
+  
+  HMA1:
+    container_name: HMA1
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    ports:
+      - "1433:1433"
+    
+    environment:
+      SA_PASSWORD: "S3cur3P@ssW0rd!"
+      ACCEPT_EULA: "Y"
+  
+  HMA2:
+    container_name: HMA2
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    ports:
+      - "1439:1433"
+    
+    environment:
+      SA_PASSWORD: "S3cur3P@ssW0rd!"
+      ACCEPT_EULA: "Y"

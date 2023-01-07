@@ -1,5 +1,7 @@
 using HousingMarketAdvisor.DAL.SqlServer.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,11 +12,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// builder.Services.AddDbContext<HousingRepository>(options =>
+//     options.UseInMemoryDatabase("HousingMarketAdvisor"));
+
 builder.Services.AddDbContext<HousingRepository>(options =>
-    options.UseInMemoryDatabase("HousingMarketAdvisor"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("HMA1")));
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+// builder.Services.AddDbContext<ExchangeRateRepository>(options =>
+//     options.UseInMemoryDatabase("HousingMarketAdvisor"));
 
 builder.Services.AddDbContext<ExchangeRateRepository>(options =>
-    options.UseInMemoryDatabase("HousingMarketAdvisor"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("HMA2")));
 
 builder.Services.AddCors(options =>
 {
@@ -29,11 +39,14 @@ var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// if (app.Environment.IsDevelopment())
+// {
+//     app.UseSwagger();
+//     app.UseSwaggerUI();
+// }
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // app.UseHttpsRedirection();
 

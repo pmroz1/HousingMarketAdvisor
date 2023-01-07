@@ -22,6 +22,8 @@ namespace HousingMarketAdvisor.API.Controllers
             _logger = logger;
             _context = context;
 
+            _context.Database.EnsureCreated();
+
             // if empty add records
             if (_context.CurrencyExchangeRates.Any()) return;
             var currencyExchangeRatesGenerator = new Faker<CurrencyExchangeRate>()
