@@ -15,6 +15,15 @@ services:
       - HMA1
       - HMA2
   
+  currencyfetcher:
+    container_name: currencyfetcher
+    build:
+      context: .
+      dockerfile: ./ExchangeRateFetcher/Dockerfile
+    depends_on:
+      - HMA1
+      - HMA2
+  
   gateway:
     container_name: gateway
     environment:

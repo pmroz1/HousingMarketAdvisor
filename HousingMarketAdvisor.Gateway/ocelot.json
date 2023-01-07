@@ -1,6 +1,6 @@
 {
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:9004"
+    "BaseUrl": "http://localhost:9004"
   },
   "Routes": [
     {
@@ -10,11 +10,10 @@
       ],
       "DownstreamPathTemplate": "/api/HousingOffer",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "housingmarketadvisorapi_api",
-          "Port": 9001
-        }
+      "DownstreamHost": "host.docker.internal",
+      "DownstreamPort": 9004,
+      "DownstreamHttpMethod": [
+        "Get"
       ]
     },
     {
