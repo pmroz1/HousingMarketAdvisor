@@ -22,7 +22,7 @@ public class HousingOfferController : ControllerBase
         _context = context;
 
         _context.Database.EnsureCreated();
-
+        
         // if empty add records
         if (_context.HousingOffers.Any()) return;
         var housingOffersGenerator = new Faker<HousingOffer>()

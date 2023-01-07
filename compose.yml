@@ -2,6 +2,9 @@
 services:
   housingmarketadvisorapi_api:
     container_name: api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
     build:
       context: .
       dockerfile: ./HousingMarketAdvisor.API/Dockerfile
@@ -14,6 +17,9 @@ services:
   
   gateway:
     container_name: gateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
     build:
       context: .
       dockerfile: ./HousingMarketAdvisor.Gateway/Dockerfile
