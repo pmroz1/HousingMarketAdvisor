@@ -21,7 +21,8 @@ public class HousingOfferController : ControllerBase
         _logger = logger;
         _context = context;
 
-
+        _context.Database.EnsureCreated();
+        
         // if empty add records
         if (_context.HousingOffers.Any()) return;
         var housingOffersGenerator = new Faker<HousingOffer>()
@@ -39,7 +40,7 @@ public class HousingOfferController : ControllerBase
             .RuleFor(ho => ho.ImageUrl, f => f.Image.PicsumUrl())
             .RuleFor(ho => ho.ImageUrl2, f => f.Image.PicsumUrl())
             .RuleFor(ho => ho.ImageUrl3, f => f.Image.PicsumUrl())
-            .Generate(10);
+            .Generate(50);
 
         _context.HousingOffers
             .AddRange(housingOffersGenerator);
