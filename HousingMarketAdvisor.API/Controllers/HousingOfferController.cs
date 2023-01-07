@@ -21,10 +21,12 @@ public class HousingOfferController : ControllerBase
         _logger = logger;
         _context = context;
 
+
         // if empty add records
         if (_context.HousingOffers.Any()) return;
         var housingOffersGenerator = new Faker<HousingOffer>()
             .RuleFor(ho => ho.Title, f => f.Lorem.Sentence())
+            .RuleFor(ho => ho.Price, f => decimal.Parse(f.Commerce.Price(0, 100, 2)))
             .RuleFor(ho => ho.Description, f => f.Lorem.Paragraph())
             .RuleFor(ho => ho.Address, f => f.Address.FullAddress())
             .RuleFor(ho => ho.City, f => f.Address.City())

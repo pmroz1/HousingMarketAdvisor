@@ -18,3 +18,21 @@ services:
     ports:
       - "9003:443"
       - "9004:80"
+  
+  HMA1:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    ports:
+      - "1433:1433"
+    
+    environment:
+      SA_PASSWORD: "S3cur3P@ssW0rd!"
+      ACCEPT_EULA: "Y"
+      
+  HMA2:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    ports:
+      - "1439:1433"
+    
+    environment:
+      SA_PASSWORD: "S3cur3P@ssW0rd!"
+      ACCEPT_EULA: "Y"
