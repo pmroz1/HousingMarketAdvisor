@@ -77,7 +77,7 @@ public class Worker : BackgroundService
                     _databaseService.InsertExchangeRate(new CurrencyExchangeRate()
                     {
                         BaseCurrency = rate.Keys.First(),
-                        TargetCurrency = propertyName,
+                        TargetCurrency = "PLN",
                         Date = DateTime.Now,
                         Rate = JsonConvert.DeserializeObject<ExchangeRateDto>(rate.Values.First()).pln
                     });

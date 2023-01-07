@@ -25,17 +25,17 @@ namespace HousingMarketAdvisor.API.Controllers
             _context.Database.EnsureCreated();
 
             // if empty add records
-            if (_context.CurrencyExchangeRates.Any()) return;
-            var currencyExchangeRatesGenerator = new Faker<CurrencyExchangeRate>()
-                .RuleFor(cer => cer.Date, f => f.Date.Past())
-                .RuleFor(cer => cer.Rate, f => f.Random.Double(0.5, 2.0))
-                .RuleFor(cer => cer.BaseCurrency, f => f.Finance.Currency().Code)
-                .RuleFor(cer => cer.TargetCurrency, f => f.Finance.Currency().Code)
-                .Generate(10);
-
-            _context.CurrencyExchangeRates
-                .AddRange(currencyExchangeRatesGenerator);
-            _context.SaveChanges();
+            // if (_context.CurrencyExchangeRates.Any()) return;
+            // var currencyExchangeRatesGenerator = new Faker<CurrencyExchangeRate>()
+            //     .RuleFor(cer => cer.Date, f => f.Date.Past())
+            //     .RuleFor(cer => cer.Rate, f => f.Random.Double(0.5, 2.0))
+            //     .RuleFor(cer => cer.BaseCurrency, f => f.Finance.Currency().Code)
+            //     .RuleFor(cer => cer.TargetCurrency, f => f.Finance.Currency().Code)
+            //     .Generate(5);
+            //
+            // _context.CurrencyExchangeRates
+            //     .AddRange(currencyExchangeRatesGenerator);
+            // _context.SaveChanges();
         }
 
         [HttpGet]
@@ -50,10 +50,15 @@ namespace HousingMarketAdvisor.API.Controllers
             return Ok(currencyExchangeRates);
         }
 
+
         [HttpGet("{id}")]
         public async Task<ActionResult<CurrencyExchangeRate>> GetCurrencyExchangeRate(int id)
         {
             var currencyExchangeRate = await _context.CurrencyExchangeRates.FindAsync(id);
+
+            var latestRates = _context.CurrencyExchangeRates
+                .GroupBy(x => x.BaseCurrency)
+                .Select(group => group.OrderByDescending(x => x.Date).FirstOrDefault());
 
             if (currencyExchangeRate == null)
             {

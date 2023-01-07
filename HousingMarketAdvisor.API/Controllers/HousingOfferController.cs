@@ -22,7 +22,7 @@ public class HousingOfferController : ControllerBase
         _context = context;
 
         _context.Database.EnsureCreated();
-        
+
         // if empty add records
         if (_context.HousingOffers.Any()) return;
         var housingOffersGenerator = new Faker<HousingOffer>()
@@ -48,15 +48,24 @@ public class HousingOfferController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<HousingOffer>>> Get()
+    public ActionResult<IEnumerable<HousingOffer>> GetHousingOffers(
+        [FromQuery] decimal? minPrice,
+        [FromQuery] decimal? maxPrice,
+        [FromQuery] string? address,
+        [FromQuery] string? city,
+        [FromQuery] string? zipCode,
+        [FromQuery] string? country,
+        [FromQuery] string? title)
     {
-        if (!_context.HousingOffers.Any())
-        {
-            return NotFound();
-        }
-
-        var housingOffers = await _context.HousingOffers.ToListAsync();
-        return Ok(housingOffers);
+        var housingOffers = _context.HousingOffers
+            .Where(ho => (!minPrice.HasValue || ho.Price >= minPrice.Value) &&
+                         (!maxPrice.HasValue || ho.Price <= maxPrice.Value) &&
+                         (address == null || ho.Address == address) &&
+                         (city == null || ho.City == city) &&
+                         (zipCode == null || ho.ZipCode == zipCode) &&
+                         (country == null || ho.Country == country) &&
+                         (title == null || ho.Title == title));
+        return housingOffers.ToList();
     }
 
     [HttpGet("{id}")]
