@@ -8,6 +8,10 @@ services:
     ports:
       - "9000:443"
       - "9001:80"
+    depends_on:
+      - HMA1
+      - HMA2
+      
   gateway:
     container_name: gateway
     build:
@@ -18,6 +22,8 @@ services:
     ports:
       - "9003:443"
       - "9004:80"
+    depends_on:
+      - housingmarketadvisorapi_api
   
   HMA1:
     image: "mcr.microsoft.com/mssql/server:2022-latest"
@@ -27,7 +33,7 @@ services:
     environment:
       SA_PASSWORD: "S3cur3P@ssW0rd!"
       ACCEPT_EULA: "Y"
-      
+  
   HMA2:
     image: "mcr.microsoft.com/mssql/server:2022-latest"
     ports:
