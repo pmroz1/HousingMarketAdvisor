@@ -11,7 +11,7 @@ services:
     depends_on:
       - HMA1
       - HMA2
-      
+  
   gateway:
     container_name: gateway
     build:
@@ -26,6 +26,7 @@ services:
       - housingmarketadvisorapi_api
   
   HMA1:
+    container_name: HMA1
     image: "mcr.microsoft.com/mssql/server:2022-latest"
     ports:
       - "1433:1433"
@@ -35,6 +36,7 @@ services:
       ACCEPT_EULA: "Y"
   
   HMA2:
+    container_name: HMA2
     image: "mcr.microsoft.com/mssql/server:2022-latest"
     ports:
       - "1439:1433"

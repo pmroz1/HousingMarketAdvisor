@@ -20,8 +20,11 @@ builder.Services.AddDbContext<HousingRepository>(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+// builder.Services.AddDbContext<ExchangeRateRepository>(options =>
+//     options.UseInMemoryDatabase("HousingMarketAdvisor"));
+
 builder.Services.AddDbContext<ExchangeRateRepository>(options =>
-    options.UseInMemoryDatabase("HousingMarketAdvisor"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("HMA2")));
 
 builder.Services.AddCors(options =>
 {
