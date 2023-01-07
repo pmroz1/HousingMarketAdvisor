@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingMarketAdvisor.DAL.Sq
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingMarketAdvisor.Gateway", "HousingMarketAdvisor.Gateway\HousingMarketAdvisor.Gateway.csproj", "{8D5A3B41-BFCD-400D-9B11-83A0DB4172B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeRateFetcher", "ExchangeRateFetcher\ExchangeRateFetcher.csproj", "{7AAF027A-8206-454C-ACF7-8835D6534068}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{8D5A3B41-BFCD-400D-9B11-83A0DB4172B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D5A3B41-BFCD-400D-9B11-83A0DB4172B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D5A3B41-BFCD-400D-9B11-83A0DB4172B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AAF027A-8206-454C-ACF7-8835D6534068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AAF027A-8206-454C-ACF7-8835D6534068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AAF027A-8206-454C-ACF7-8835D6534068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AAF027A-8206-454C-ACF7-8835D6534068}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

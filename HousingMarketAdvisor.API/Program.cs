@@ -18,13 +18,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<HousingRepository>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HMA1")));
 
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
 // builder.Services.AddDbContext<ExchangeRateRepository>(options =>
 //     options.UseInMemoryDatabase("HousingMarketAdvisor"));
 
 builder.Services.AddDbContext<ExchangeRateRepository>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HMA2")));
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddCors(options =>
 {
