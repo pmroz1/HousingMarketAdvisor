@@ -23,20 +23,19 @@ namespace HousingMarketAdvisor.API.Controllers
             _context = context;
 
             _context.Database.EnsureCreated();
-
-            // if empty add records
-            // if (_context.CurrencyExchangeRates.Any()) return;
-            // var currencyExchangeRatesGenerator = new Faker<CurrencyExchangeRate>()
-            //     .RuleFor(cer => cer.Date, f => f.Date.Past())
-            //     .RuleFor(cer => cer.Rate, f => f.Random.Double(0.5, 2.0))
-            //     .RuleFor(cer => cer.BaseCurrency, f => f.Finance.Currency().Code)
-            //     .RuleFor(cer => cer.TargetCurrency, f => f.Finance.Currency().Code)
-            //     .Generate(5);
-            //
-            // _context.CurrencyExchangeRates
-            //     .AddRange(currencyExchangeRatesGenerator);
-            // _context.SaveChanges();
         }
+
+        // [HttpGet]
+        // public async Task<ActionResult<IEnumerable<CurrencyExchangeRate>>> Get()
+        // {
+        //     if (!_context.CurrencyExchangeRates.Any())
+        //     {
+        //         return NotFound();
+        //     }
+        //
+        //     var currencyExchangeRates = await _context.CurrencyExchangeRates.ToListAsync();
+        //     return Ok(currencyExchangeRates);
+        // }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CurrencyExchangeRate>>> Get()
@@ -46,8 +45,18 @@ namespace HousingMarketAdvisor.API.Controllers
                 return NotFound();
             }
 
-            var currencyExchangeRates = await _context.CurrencyExchangeRates.ToListAsync();
-            return Ok(currencyExchangeRates);
+            // Get all the exchange rates from the database, sorted in descending order by date
+            var currencyExchangeRates = await _context.CurrencyExchangeRates
+                .OrderByDescending(rate => rate.Date)
+                .ToListAsync();
+
+            // Use LINQ to group the exchange rates by base currency, and select the first exchange rate in each group
+            var latestRates = currencyExchangeRates
+                .GroupBy(rate => rate.BaseCurrency)
+                .Select(group => group.First())
+                .ToList();
+
+            return Ok(latestRates);
         }
 
 
